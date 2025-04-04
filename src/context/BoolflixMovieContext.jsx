@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 
 const BoolflixMovieContext = createContext()
 
-function CustomBoolflixMovieContext({ children }) {
+function CustomBoolflixMovieContextProvider({ children }) {
 
     const [movieList, setMovieList] = useState([])
     const [searchQuery, setSearchQeury] = useState('')
@@ -12,10 +12,22 @@ function CustomBoolflixMovieContext({ children }) {
 
     useEffect(() => {
 
-        fetch(base_movies_api_url)
-            .then(res => res.json)
-            .then(data => setMovieList(data))
+        //console.log(base_movies_api_url);
+
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            }
+        };
+
+
+        fetch(base_movies_api_url, options)
+            .then(res => res.json())
+            .then(data => setMovieList(data.results))
             .catch(err => console.error(err))
+
+        //console.log(movieList);
 
     }, [searchQuery])
 
@@ -23,18 +35,17 @@ function CustomBoolflixMovieContext({ children }) {
         <BoolflixMovieContext.Provider
             value={{
                 movieList,
-                setSearchQeury,
-            }}
-        >
+                setSearchQeury
+            }}>
             {children}
         </BoolflixMovieContext.Provider>
     )
 
 }
 
-function useCustomBoolflixMovieContextt() {
-    const context = useContext(CustomBoolflixMovieContext);
+function useCustomBoolflixMovieContext() {
+    const context = useContext(BoolflixMovieContext);
     return context;
 }
 
-export default { CustomBoolflixMovieContext, useCustomBoolflixMovieContextt }
+export { CustomBoolflixMovieContextProvider, useCustomBoolflixMovieContext }

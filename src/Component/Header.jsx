@@ -1,14 +1,18 @@
 import { useState } from "react"
 
-import { useBoolflixMovieContext } from "../contex/BoolflixMovieContext"
+import { useCustomBoolflixMovieContext } from "../context/BoolflixMovieContext"
 
 
 export default function Header() {
 
-    const { setSearchQeury } = useBoolflixMovieContext()
+    const { setSearchQeury } = useCustomBoolflixMovieContext()
     const [textSearch, setTextSearch] = useState('')
 
+    function handleClickSearch() {
+        console.log(textSearch);
 
+        setSearchQeury(textSearch)
+    }
 
     return (
         <>
@@ -16,7 +20,7 @@ export default function Header() {
                 <nav>
                     <div className="Search container text-center">
                         <input type="text" value={textSearch} onChange={e => setTextSearch(e.target.value)} />
-                        <button onClick={setSearchQeury(textSearch)}>
+                        <button onClick={handleClickSearch}>
                             Search
                         </button>
                     </div>
