@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-import { useCustomBoolflixMovieContext } from "../context/BoolflixMovieContext"
+import { useCustomBoolflixContext } from "../context/BoolflixContext"
 
 
 export default function Header() {
 
-    const { setSearchQeury } = useCustomBoolflixMovieContext()
+    const { setSearchQeury } = useCustomBoolflixContext()
     const [textSearch, setTextSearch] = useState('')
 
     function handleClickSearch() {

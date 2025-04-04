@@ -1,42 +1,17 @@
-import { useCustomBoolflixMovieContext } from "../context/BoolflixMovieContext"
+import { useCustomBoolflixContext } from "../context/BoolflixContext"
 
+import SectionList from "../Component/SectionList"
 
 export default function Home() {
 
-    const { movieList } = useCustomBoolflixMovieContext()
+    const { movieList, seriesList } = useCustomBoolflixContext()
 
     return (
         <>
             <main>
                 <div className="container">
-                    <div className="row">
-                        {
-                            movieList.map(movie => {
-                                return (
-                                    <div key={movie.id} className="col">
-                                        <div className="card">
-                                            <div className="card-body">
-                                                <ul>
-                                                    <li>
-                                                        {movie.title}
-                                                    </li>
-                                                    <li>
-                                                        {movie.original_title}
-                                                    </li>
-                                                    <li>
-                                                        {movie.original_language}
-                                                    </li>
-                                                    <li>
-                                                        {movie.vote_average}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+                    <SectionList type="Movie" list={movieList} />
+                    <SectionList type="Series" list={seriesList} />
                 </div>
             </main>
         </>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import { CustomBoolflixMovieContextProvider } from "./context/BoolflixMovieContext"
+import { CustomBoolflixContextProvider } from "./context/BoolflixContext"
 import DefaultLayout from "./Layout/DefaultLayout"
 import Home from "./Pages/Home"
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <CustomBoolflixMovieContextProvider>
+      <CustomBoolflixContextProvider>
         <BrowserRouter>
           <Routes>
             <Route Component={DefaultLayout}>
@@ -16,7 +16,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </CustomBoolflixMovieContextProvider>
+      </CustomBoolflixContextProvider>
     </>
   )
 }
