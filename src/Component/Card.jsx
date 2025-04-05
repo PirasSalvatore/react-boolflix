@@ -1,5 +1,6 @@
 
 import FlagLanguage from "./FlagLanguage"
+import Stars from "./Satrs"
 
 const base_url_img = "https://image.tmdb.org/t/p/"
 const width_url_img = "w185"
@@ -34,7 +35,7 @@ export default function Card({ item }) {
                             }
                         </li>
                         <li>
-                            {item.vote_average}
+                            <Stars vote={item.vote_average} />
                         </li>
                     </ul>
                 </div>
