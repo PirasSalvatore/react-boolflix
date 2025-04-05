@@ -24,9 +24,11 @@ export default function Card({ item }) {
                         Titolo: {item.title || item.name}
                     </h5>
 
-                    <h5 className="card-title">
-                        Titolo originale: {item.original_title || item.original_name}
-                    </h5>
+                    {!(item.title || item.name === item.original_title || item.original_name) &&
+                        (<h5 className="card-title">
+                            Titolo originale: {item.original_title || item.original_name}
+                        </h5>)
+                    }
 
                     <p className="card-text">
                         Lingua: {
