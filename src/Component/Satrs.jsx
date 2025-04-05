@@ -31,9 +31,9 @@ export default function Stars({ vote }) {
         <>
             <div className="row no-wrap">
                 {
-                    Stars.map(star => {
+                    Stars.map((star, index) => {
                         return (
-                            <div className="col">
+                            <div key={`Star-${index}`} className="col">
                                 {
                                     star
                                 }

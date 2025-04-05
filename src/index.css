@@ -1,2 +1,32 @@
 @import 'bootstrap';
 @import 'bootstrap-icons';
+
+body {
+    background-color: rgb(56, 56, 56);
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.card {
+    width: 16rem;
+    height: auto;
+
+    &:hover {
+        .card-img-overlay {
+            background-color: black !important;
+            display: block !important;
+
+            &::-webkit-scrollbar {
+                display: none !important;
+            }
+
+        }
+    }
+}
+
+.card-img {
+    width: 100%;
+}

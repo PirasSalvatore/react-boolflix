@@ -17,12 +17,15 @@ export default function Header() {
     return (
         <>
             <header>
-                <nav>
-                    <div className="Search container text-center">
-                        <input type="text" value={textSearch} onChange={e => setTextSearch(e.target.value)} />
-                        <button onClick={handleClickSearch}>
-                            Search
-                        </button>
+                <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+                    <div className="container-fluid">
+                        <a className="navbar-brand text-danger">BOOLFLIX</a>
+                        <div className="d-flex" role="search">
+                            <input type="text" value={textSearch} onChange={e => setTextSearch(e.target.value)} />
+                            <button className="btn btn-danger" onClick={handleClickSearch}>
+                                Search
+                            </button>
+                        </div>
                     </div>
                 </nav>
             </header>
