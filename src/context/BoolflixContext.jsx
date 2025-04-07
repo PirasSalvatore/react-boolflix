@@ -8,6 +8,7 @@ function CustomBoolflixContextProvider({ children }) {
     const [seriesList, setSeriesList] = useState([])
     const [searchQuery, setSearchQeury] = useState('')
     const [cast, setCast] = useState([])
+    const [genre, setGenre] = useState([])
 
     const api_key = import.meta.env.VITE_MOVIE_DB_API_KEY
     const base_s_api_url_movie = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchQuery.replaceAll(" ", "+")}`;
@@ -95,6 +96,32 @@ function CustomBoolflixContextProvider({ children }) {
 
     }
 
+    function getgenre(id, type) {
+        const url_s_api_movie_details = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
+        const url_s_api_series_details = `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}`
+
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json'
+            }
+        }
+
+        fetch(type === 'Movie' ? url_s_api_movie_details : url_s_api_series_details, options)
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data);
+                if (!data.status_code) {
+                    //console.log(data)
+                    setGenre(data.genres.map(item => item.name))
+                } else {
+                    setGenre([])
+                }
+
+            })
+            .catch(err => console.error(err))
+    }
+
     return (
         <BoolflixContext.Provider
             value={{
@@ -102,7 +129,9 @@ function CustomBoolflixContextProvider({ children }) {
                 seriesList,
                 setSearchQeury,
                 getCast,
-                cast
+                cast,
+                genre,
+                getgenre
             }}>
             {children}
         </BoolflixContext.Provider>

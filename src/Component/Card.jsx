@@ -9,14 +9,15 @@ const width_url_img = "w500"
 
 export default function Card({ item, type }) {
 
-    const { getCast, cast } = useCustomBoolflixContext()
+    const { getCast, getgenre, cast, genre } = useCustomBoolflixContext()
 
     useEffect(() => {
         getCast(item.id, type)
+        getgenre(item.id, type)
 
     }, [item.id])
 
-    //console.log(cast);
+    //console.log(genre);
 
 
 
