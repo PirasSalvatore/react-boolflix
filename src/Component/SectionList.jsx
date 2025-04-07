@@ -11,7 +11,7 @@ export default function SectionList({ type, list }) {
                 {
                     list.map(item => {
                         return (
-                            <Card key={item.id} item={item} />
+                            <Card key={item.id} item={item} type={type} />
                         )
                     })
                 }

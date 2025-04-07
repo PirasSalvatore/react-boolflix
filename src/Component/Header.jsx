@@ -22,7 +22,7 @@ export default function Header() {
                         <h1><a className="navbar-brand text-danger">BOOLFLIX</a></h1>
                         <div className="d-flex" role="search">
                             <input type="text" value={textSearch} onChange={e => setTextSearch(e.target.value)} />
-                            <button className="btn btn-danger" onClick={handleClickSearch}>
+                            <button className="btn btn-outline-danger" onClick={handleClickSearch}>
                                 Search
                             </button>
                         </div>

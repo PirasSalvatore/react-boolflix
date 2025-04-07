@@ -1,11 +1,24 @@
+import { useCustomBoolflixContext } from "../context/BoolflixContext"
+import { useEffect } from "react"
 
 import FlagLanguage from "./FlagLanguage"
 import Stars from "./Satrs"
 
 const base_url_img = "https://image.tmdb.org/t/p/"
-const width_url_img = "w342"
+const width_url_img = "w500"
 
-export default function Card({ item }) {
+export default function Card({ item, type }) {
+
+    const { getCast, cast } = useCustomBoolflixContext()
+
+    useEffect(() => {
+        getCast(item.id, type)
+
+    }, [item.id])
+
+    //console.log(cast);
+
+
 
     return (
         <div className="col">
@@ -13,9 +26,9 @@ export default function Card({ item }) {
             <div className="card text-bg-dark">
                 {
                     item.poster_path ?
-                        (<img className="card-img" src={base_url_img + width_url_img + item.poster_path} alt={item.original_title || item.original_name} />)
+                        (<img className="card-img " src={base_url_img + width_url_img + item.poster_path} alt={item.original_title || item.original_name} />)
                         :
-                        (<img className="card-img" width="342px" src="https://www.avislivorno.it/wp-content/uploads/2016/01/ciak.png" alt="" />)
+                        (<img className="card-img " width="342px" src="https://www.avislivorno.it/wp-content/uploads/2016/01/ciak.png" alt="" />)
                 }
 
                 <div className="card-img-overlay overflow-y-scroll d-none" >
@@ -44,6 +57,12 @@ export default function Card({ item }) {
                     <div className="card-text">
                         <Stars vote={item.vote_average} />
                     </div>
+
+                    <p>
+                        cast : {
+                            cast.map(actor => `${actor.name} `)
+                        }
+                    </p>
 
                     <p className="card-text">
                         Descrizione: {item.overview}

@@ -4,6 +4,8 @@
 
 body {
     background-color: rgb(10, 10, 10);
+
+    font-family: "Merriweather", serif;
 }
 
 h1,
@@ -16,8 +18,14 @@ h5 {
     font-style: normal;
 }
 
+
 section {
     background-color: rgb(56, 56, 56);
+
+    h1 {
+        font-size: 24px;
+    }
+
 }
 
 .navbar-brand {
@@ -27,6 +35,8 @@ section {
 
 .card {
     min-height: 336px;
+
+    font-size: 12px;
 
     &:hover {
         .card-img-overlay {
@@ -39,8 +49,4 @@ section {
 
         }
     }
-}
-
-.card-img {
-    width: 100%;
 }

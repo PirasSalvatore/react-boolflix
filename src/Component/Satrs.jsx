@@ -24,7 +24,7 @@ export default function Stars({ vote }) {
         return items
     }
 
-    console.log(Stars);
+    //console.log(Stars);
 
 
     return (
