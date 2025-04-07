@@ -5,9 +5,9 @@ export default function SectionList({ type, list }) {
 
 
     return (
-        <section >
-            {list.length !== 0 && (<h1 className="text-danger">{type}</h1>)}
-            <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-gap-3">
+        <section className="my-3 p-1">
+            {list.length !== 0 && (<h1 className="text-danger ms-4">{type}</h1>)}
+            <div className="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-gap-3 m-4">
                 {
                     list.map(item => {
                         return (
